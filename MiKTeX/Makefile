@@ -16,7 +16,7 @@ RM = rm -f
 GREP = grep
 
 
-all: $(DIPLOMA_REPORT_PDF).pdf $(PRACTICE_REPORT_PDF).pdf $(TITLE_PDF).pdf $(TASK_PDF).pdf
+all: $(DIPLOMA_REPORT_PDF).pdf #$(PRACTICE_REPORT_PDF).pdf $(TITLE_PDF).pdf $(TASK_PDF).pdf
 
 
 publish_to_dropbox: all
@@ -40,7 +40,6 @@ $(DIPLOMA_REPORT_PDF).pdf: *.tex
 	$(BIBTEX) $(DIPLOMA_REPORT_PDF).aux
 	$(PDFLATEX) $(DIPLOMA_REPORT_PDF)
 	$(PDFLATEX) $(DIPLOMA_REPORT_PDF)
-	cp $(DIPLOMA_REPORT_PDF).pdf ../example_diploma.pdf
 
 
 $(PRACTICE_REPORT_PDF).pdf: *.tex
@@ -49,14 +48,6 @@ $(PRACTICE_REPORT_PDF).pdf: *.tex
 	$(PDFLATEX) $(PRACTICE_REPORT_PDF)
 	$(PDFLATEX) $(PRACTICE_REPORT_PDF)
 	cp $(PRACTICE_REPORT_PDF).pdf ../example_practice.pdf
-
-
-$(COURSE_REPORT_PDF).pdf: *.tex
-	$(PDFLATEX) $(COURSE_REPORT_PDF)
-	$(BIBTEX) $(COURSE_REPORT_PDF).aux
-	$(PDFLATEX) $(COURSE_REPORT_PDF)
-	$(PDFLATEX) $(COURSE_REPORT_PDF)
-	cp $(COURSE_REPORT_PDF).pdf ../example_course_project.pdf
 
 $(TITLE_PDF).pdf: *.tex
 	$(PDFLATEX) $(TITLE_PDF)
